@@ -1,0 +1,56 @@
+# === Resume Website .gitignore ===
+
+# ─── PDF / Source Documents (personal data, don't commit) ───
+*.pdf
+*.doc
+*.docx
+
+# ─── Reference / Design Assets (large binary files) ───
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.ico
+*.sketch
+*.fig
+*.xd
+
+# ─── Temp / Scratch Scripts ───
+*.py
+*.ipynb
+/tmp/
+temp/
+
+# ─── OS Generated Files ───
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ─── Editor / IDE ───
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ─── Node (if ever added later) ───
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.env
+.env.local
+.env.*
+
+# ─── Build Output (if ever added later) ───
+/dist/
+/build/
+/.cache/
