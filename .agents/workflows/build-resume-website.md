@@ -126,13 +126,16 @@ Use semantic HTML. The page structure must be:
 
 The hero is the most important section. Must include:
 
-1. **Decorative background text** — giant outline letters (e.g. `BI`) using `-webkit-text-stroke`
-2. **Eyebrow label** — small uppercase + wide letter-spacing
-3. **Large serif name** — `clamp(4rem, 10vw, 9rem)` with tight tracking
-4. **Subtitle** — sans-serif, muted color, max 60ch
-5. **CTA buttons** — primary (filled dark) + secondary (outlined)
-6. **Stats row** — 3 metrics with vertical dividers, separated by `border-top`
-7. **Scroll indicator** — animated arrow/line at bottom
+1. **Eyebrow label** — small uppercase + wide letter-spacing
+2. **Large serif name** — `clamp(4rem, 10vw, 9rem)` with tight tracking
+3. **Subtitle** — sans-serif, muted color, max 60ch
+4. **CTA icon buttons** — circle buttons with SVG icons + small label below each
+   - Pattern: `.btn-icon-wrap > a.btn-icon + span.btn-icon-label`
+   - First icon: dark filled (`btn-icon--dark`); rest: outlined (`btn-icon--outline`)
+   - Icons: Exp (briefcase) · Email (envelope) · LinkedIn · Resume (download arrow)
+   - Resume icon uses `href="padmashri_resume.pdf" download="Padmashri_R_Resume.pdf"`
+5. **Stats row** — 3 metrics with vertical dividers, separated by `border-top`
+6. **Scroll indicator** — animated arrow/line at bottom
 
 ---
 
@@ -204,8 +207,11 @@ git init
 
 # Create .gitignore (must run before git add)
 # .gitignore should exclude: *.pdf, .DS_Store, Thumbs.db, *.py scripts, /tmp/
+# BUT whitelist the resume PDF so it deploys to GitHub Pages:
+# Add this line to .gitignore: !padmashri_resume.pdf
 
 git add index.html style.css main.js .gitignore .agents/
+git add -f padmashri_resume.pdf   # force-add whitelisted PDF
 git commit -m "feat: initial resume website with Anthropic-inspired design"
 ```
 
@@ -218,5 +224,7 @@ git commit -m "feat: initial resume website with Anthropic-inspired design"
 - [ ] All job toggles open/close correctly
 - [ ] Hamburger closes when a nav link is clicked
 - [ ] Page works with JavaScript disabled (content still readable)
-- [ ] No PDF file committed to git
-- [ ] `.gitignore` in place
+- [ ] `padmashri_resume.pdf` committed to git (`git ls-files padmashri_resume.pdf` returns the file)
+- [ ] `.gitignore` has `!padmashri_resume.pdf` exception so PDF is not blocked
+- [ ] Download button `href` filename matches exact PDF filename on disk
+- [ ] Hero CTA icons: Exp, Email, LinkedIn, Resume all work correctly

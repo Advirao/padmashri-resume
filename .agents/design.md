@@ -106,11 +106,18 @@ All sections use `clamp(5rem, 10vh, 8rem)` vertical padding — generous breathi
 
 ### Hero Section
 
-- **Background decorative text**: giant `BI` in outline stroke only — depth without noise
 - **Stats row**: 3 numbers separated by hairline dividers
 - **Scroll indicator**: animated bouncing text + gradient line
 - **Parallax**: background text drifts slightly upward on scroll (via JS)
 - **Entrance animation**: each element staggers in with 100ms delay using `requestAnimationFrame`
+- **CTA Icon Buttons**: four circle icon buttons in a row, each wrapped in `.btn-icon-wrap`
+  - **Exp** (dark filled) — scrolls to `#experience`
+  - **Email** (outline) — opens mailto link
+  - **LinkedIn** (outline) — opens LinkedIn profile in new tab
+  - **Resume** (outline) — triggers download of `padmashri_resume.pdf`
+  - Each icon has a small label below it (`.btn-icon-label`, uppercase, 0.65rem)
+
+> **Note:** The original large decorative `BI` background text (`hero-bg-text`) has been removed from the hero section.
 
 ### Job Experience Accordion
 

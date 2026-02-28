@@ -11,14 +11,17 @@ description: Core rules, conventions, and constraints for building resume/portfo
 - **JavaScript** — Vanilla ES2020+ (no libraries, no bundlers)
 - **Fonts** — Google Fonts only (`Playfair Display` + `Inter`)
 - **No build step** — files must work by opening `index.html` directly in a browser
+- **PDF** — `padmashri_resume.pdf` must be committed to git (exception in `.gitignore`) so the download button works on GitHub Pages
+- **No build step** — files must work by opening `index.html` directly in a browser
 
 ## File Structure
 
 ```
 resume/
-├── index.html        # Single-page app
-├── style.css         # All styles
-├── main.js           # All interactivity
+├── index.html               # Single-page app
+├── style.css                # All styles
+├── main.js                  # All interactivity
+├── padmashri_resume.pdf     # Resume PDF — committed intentionally for download
 ├── .gitignore
 └── .agents/
     ├── design.md
@@ -63,6 +66,15 @@ resume/
 ## Git Rules
 
 - Commit message format: `type: short description` (e.g. `feat: add experience section`)
-- Never commit `*.pdf` files (personal data)
+- **Exception:** `padmashri_resume.pdf` IS committed intentionally — added via `git add -f` and whitelisted with `!padmashri_resume.pdf` in `.gitignore` so it deploys to GitHub Pages
+- Never commit other `*.pdf` files (personal data)
 - Never commit OS files (`.DS_Store`, `Thumbs.db`)
 - Never commit editor folders (`.vscode/`, `.idea/`)
+
+## Hero CTA Icon Pattern
+
+- Icons are wrapped in `.btn-icon-wrap` (flex column, centred)
+- The `<a>` uses class `btn-icon btn-icon--dark` (filled) or `btn-icon--outline` (ghost ring)
+- A `<span class="btn-icon-label">` sits below each icon (uppercase, 0.65rem, muted)
+- Current icons (in order): **Exp** → **Email** → **LinkedIn** → **Resume (download)**
+- The Resume icon uses `download="Padmashri_R_Resume.pdf"` attribute to trigger save-dialog
