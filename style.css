@@ -131,6 +131,57 @@ img {
   font-size: 1rem;
 }
 
+/* Icon-only circle buttons */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition);
+  flex-shrink: 0;
+}
+.btn-icon:hover { transform: translateY(-3px); }
+.btn-icon--dark {
+  background: var(--slate-dark);
+  color: var(--ivory-light);
+  border-color: var(--slate-dark);
+}
+.btn-icon--dark:hover {
+  background: var(--slate-medium);
+  border-color: var(--slate-medium);
+}
+.btn-icon--outline {
+  background: transparent;
+  color: var(--slate-dark);
+  border-color: var(--slate-dark);
+}
+.btn-icon--outline:hover {
+  background: var(--slate-dark);
+  color: var(--ivory-light);
+}
+.btn-icon-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+.btn-icon-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cloud-medium);
+  font-weight: 500;
+  line-height: 1;
+}
+
 /* === NAVIGATION === */
 .nav {
   position: fixed;
@@ -258,7 +309,7 @@ img {
   letter-spacing: -0.04em;
 }
 .hero-inner {
-  container: hero / inline-size;
+  width: 100%;
   max-width: min(89.5rem, 100vw);
   margin: 0 auto;
   padding: clamp(4rem, 8vh, 8rem) clamp(1.5rem, 4vw, 5rem);
@@ -282,7 +333,7 @@ img {
   margin-bottom: var(--sp-6);
 }
 .hero-title .line {
-  display: block;
+  display: inline;
 }
 .hero-title .italic {
   font-style: italic;
@@ -761,87 +812,138 @@ a.contact-item:hover {
   transform: translateY(0);
 }
 
-/* === RESPONSIVE === */
+/* =====================================================
+   RESPONSIVE — Tablet ≤ 900px
+   ===================================================== */
 @media (max-width: 900px) {
-  .about-grid {
-    grid-template-columns: 1fr;
-    gap: var(--sp-7);
-  }
-  .edu-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .nav-links {
-    display: none;
-  }
-  .nav-cta {
-    display: none;
-  }
-  .hamburger {
-    display: flex;
-  }
 
-  /* Mobile nav */
+  /* --- Nav --- */
+  .nav-links { display: none; }
+  .nav-cta   { display: none; }
+  .hamburger { display: flex; }
   .nav-links.open {
     display: flex;
     flex-direction: column;
     position: fixed;
     top: var(--nav-h);
-    left: 0;
-    right: 0;
+    left: 0; right: 0;
     background: var(--ivory-light);
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     padding: var(--sp-5) var(--sp-6);
     gap: var(--sp-4);
     z-index: 99;
+    box-shadow: 0 8px 24px rgba(20,20,19,0.06);
   }
   .nav-links.open .nav-link {
     font-size: 1.1rem;
     color: var(--slate-dark);
+    padding: var(--sp-2) 0;
   }
-  .desktop-only {
-    display: none;
-  }
-  .hero-stats {
-    flex-wrap: wrap;
-    gap: var(--sp-4);
-  }
-  .stat-divider {
-    display: none;
-  }
-  .job-details {
-    padding-left: 0;
-  }
-  .job-meta {
-    gap: var(--sp-3);
-  }
+
+  /* --- Hero --- */
+  .desktop-only { display: none; }
+  .hero-bg-text { font-size: clamp(8rem, 22vw, 14rem); right: -0.05em; }
+  .hero-stats   { flex-wrap: wrap; gap: var(--sp-4); }
+  .stat-divider { display: none; }
+  .hero-actions { gap: var(--sp-4); }
+
+  /* --- About --- */
+  .about-grid { grid-template-columns: 1fr; gap: var(--sp-7); }
+
+  /* --- Experience --- */
+  .job-details { padding-left: 0; }
+  .job-meta    { gap: var(--sp-3); }
+
+  /* --- Education --- */
+  .edu-grid { grid-template-columns: 1fr 1fr; }
 }
 
+/* =====================================================
+   RESPONSIVE — Mobile ≤ 600px
+   ===================================================== */
 @media (max-width: 600px) {
-  .edu-grid {
-    grid-template-columns: 1fr;
+
+  /* --- Hero --- */
+  .hero-title {
+    font-size: clamp(3rem, 14vw, 5rem);
+    letter-spacing: -0.02em;
+    line-height: 1;
   }
-  .cert-card {
-    flex-direction: column;
+  .hero-subtitle { font-size: 0.95rem; }
+  .hero-actions  { flex-direction: row; flex-wrap: wrap; gap: var(--sp-3); }
+  .hero-scroll   { display: none; }       /* less clutter on small screens */
+  .hero-stats    { gap: var(--sp-5); }
+  .stat-num      { font-size: 1.8rem; }
+  .stat-label    { font-size: 0.75rem; }
+
+  /* --- Section headings --- */
+  .section-title { font-size: clamp(1.8rem, 6vw, 2.5rem); margin-bottom: var(--sp-6); }
+
+  /* --- About --- */
+  .about-text  { font-size: 0.95rem; }
+  .skill-chips { gap: var(--sp-2); }
+  .chip        { font-size: 0.75rem; padding: 0.3rem 0.7rem; }
+
+  /* --- Experience --- */
+  .job           { padding: var(--sp-5) 0; }
+  .job-company   { font-size: 1rem; }
+  .job-number    { display: none; }        /* clean up on narrow screens */
+  .job-header    { flex-wrap: nowrap; gap: var(--sp-3); }
+  .job-meta      { gap: var(--sp-2); }
+  .job-bullets   { padding-left: var(--sp-4); }
+  .job-bullets li { font-size: 0.88rem; }
+  .tech-tag      { font-size: 0.7rem; }
+
+  /* --- Education --- */
+  .edu-grid  { grid-template-columns: 1fr; }
+  .edu-card  { padding: var(--sp-5); }
+
+  /* --- Certifications --- */
+  .cert-card  {
+    flex-direction: row;           /* keep icon + text side by side */
     align-items: flex-start;
+    padding: var(--sp-4) var(--sp-5);
+    gap: var(--sp-4);
   }
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-  .footer-nav {
-    justify-content: center;
-  }
-  .footer-copy {
-    text-align: center;
-  }
-  .hero-actions {
-    flex-direction: column;
-  }
-  .hero-actions .btn {
-    width: fit-content;
-  }
-  .job-header {
-    flex-wrap: wrap;
-  }
+  .cert-icon  { width: 2.5rem; height: 2.5rem; flex-shrink: 0; }
+  .cert-name  { font-size: 1rem; }
+  .cert-issuer { font-size: 0.8rem; }
+
+  /* --- Contact --- */
+  .contact-inner  { max-width: 100%; }
+  .contact-item   { font-size: 0.9rem; }
+  .btn-large      { width: 100%; justify-content: center; }
+
+  /* --- Footer --- */
+  .footer-inner   { flex-direction: column; align-items: center; gap: var(--sp-4); }
+  .footer-copy    { text-align: center; }
+  .footer-nav     { justify-content: center; flex-wrap: wrap; gap: var(--sp-3); }
+  .footer-logo    { margin-bottom: 0; }
 }
+
+/* =====================================================
+   RESPONSIVE — Small mobile ≤ 400px
+   ===================================================== */
+@media (max-width: 400px) {
+  .hero-title   { font-size: clamp(2.5rem, 16vw, 3.5rem); }
+  .hero-label   { font-size: 0.7rem; }
+  .hero-actions { gap: var(--sp-2); }
+  .btn-icon     { width: 2.6rem; height: 2.6rem; }
+  .btn-icon-label { font-size: 0.6rem; }
+  .nav-inner    { gap: var(--sp-4); }
+  .section      { padding: clamp(3rem, 8vh, 5rem) 0; }
+}
+
+/* =====================================================
+   TOUCH — ensure tap targets are ≥ 44px
+   ===================================================== */
+@media (hover: none) and (pointer: coarse) {
+  .btn-icon        { min-width: 44px; min-height: 44px; }
+  .nav-link        { min-height: 44px; display: flex; align-items: center; }
+  .job-toggle      { min-width: 44px; min-height: 44px; }
+  .btn             { min-height: 44px; }
+  /* disable parallax — no scroll events needed */
+  .hero-bg-text    { transform: translateY(-50%) !important; }
+}
+
