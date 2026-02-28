@@ -1,9 +1,10 @@
 # === Resume Website .gitignore ===
 
 # ─── PDF / Source Documents (personal data, don't commit) ───
-*.pdf
 *.doc
 *.docx
+# Allow the resume PDF so it can be downloaded from GitHub Pages
+!padmashri_resume.pdf
 
 # ─── Reference / Design Assets (large binary files) ───
 *.png
