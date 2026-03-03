@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arizona Adventure: A Family Trip — Padmashri R</title>
+    <meta
+      name="description"
+      content="A personal journal of our Arizona family trip — Grand Canyon, Antelope Canyon, Horseshoe Bend, Flagstaff, and Sedona."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      /* ─── Blog Post Page Overrides ─── */
+      .blog-post-hero {
+        background: var(--ivory-light);
+        padding: 140px 0 60px;
+        border-bottom: 1px solid var(--border);
+      }
+      .blog-post-hero .container {
+        max-width: 760px;
+      }
+      .blog-back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+        font-family: var(--font-sans);
+        font-weight: 500;
+        color: var(--slate-light);
+        text-decoration: none;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+        transition: color var(--transition);
+      }
+      .blog-back-link:hover {
+        color: var(--clay);
+      }
+      .blog-back-link svg {
+        transition: transform var(--transition);
+      }
+      .blog-back-link:hover svg {
+        transform: translateX(-3px);
+      }
+
+      .blog-post-category {
+        display: inline-block;
+        font-size: 0.7rem;
+        font-family: var(--font-sans);
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--clay);
+        background: rgba(217, 119, 87, 0.1);
+        padding: 0.3rem 0.75rem;
+        border-radius: 50px;
+        margin-bottom: 1.25rem;
+      }
+      .blog-post-title {
+        font-family: var(--font-serif);
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 600;
+        color: var(--slate-dark);
+        line-height: 1.15;
+        margin: 0 0 1.25rem;
+      }
+      .blog-post-meta {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--slate-light);
+        border-top: 1px solid var(--border);
+        padding-top: 1.25rem;
+        margin-top: 1.25rem;
+      }
+      .blog-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+      .blog-meta-item svg {
+        opacity: 0.6;
+      }
+
+      /* ─── Post Layout ─── */
+      .blog-post-layout {
+        display: grid;
+        grid-template-columns: 1fr 240px;
+        gap: 4rem;
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 4rem 2rem 6rem;
+      }
+
+      /* ─── Post Body ─── */
+      .blog-post-body {
+        min-width: 0;
+      }
+      .blog-section-heading {
+        font-family: var(--font-serif);
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--slate-dark);
+        margin: 3rem 0 1rem;
+        padding-top: 2rem;
+        border-top: 2px solid var(--border);
+        position: relative;
+      }
+      .blog-section-heading::before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: 0;
+        width: 48px;
+        height: 2px;
+        background: var(--clay);
+      }
+      .blog-post-body p {
+        font-family: var(--font-sans);
+        font-size: 1.05rem;
+        line-height: 1.85;
+        color: var(--slate-medium);
+        margin: 0 0 1.4rem;
+      }
+      .blog-post-body p:first-of-type {
+        font-size: 1.15rem;
+        color: var(--slate-dark);
+      }
+      .blog-highlight {
+        background: var(--ivory-medium);
+        border-left: 3px solid var(--clay);
+        padding: 1rem 1.5rem;
+        border-radius: 0 8px 8px 0;
+        margin: 2rem 0;
+        font-family: var(--font-serif);
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--slate-dark);
+        line-height: 1.6;
+      }
+      .blog-location-list {
+        list-style: none;
+        padding: 0;
+        margin: 1.5rem 0 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .blog-location-list li {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--slate-dark);
+        background: var(--ivory-medium);
+        border: 1px solid var(--border);
+        padding: 0.35rem 0.9rem;
+        border-radius: 50px;
+      }
+      .blog-location-list li::before {
+        content: "📍";
+        font-size: 0.75rem;
+      }
+
+      /* ─── Sidebar TOC ─── */
+      .blog-post-sidebar {
+        position: sticky;
+        top: 100px;
+        align-self: start;
+        padding: 1.5rem;
+        background: var(--ivory-medium);
+        border-radius: 12px;
+        border: 1px solid var(--border);
+      }
+      .toc-label {
+        font-family: var(--font-sans);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--slate-light);
+        margin: 0 0 1rem;
+      }
+      .toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .toc-list li + li {
+        margin-top: 0.4rem;
+      }
+      .toc-list a {
+        font-family: var(--font-sans);
+        font-size: 0.85rem;
+        color: var(--slate-light);
+        text-decoration: none;
+        display: block;
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
+        border-left: 2px solid transparent;
+        transition: all var(--transition);
+      }
+      .toc-list a:hover,
+      .toc-list a.active {
+        color: var(--clay);
+        border-left-color: var(--clay);
+        background: rgba(217, 119, 87, 0.06);
+      }
+      .toc-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 1rem 0;
+      }
+      .toc-stats {
+        font-family: var(--font-sans);
+        font-size: 0.78rem;
+        color: var(--slate-light);
+        line-height: 1.7;
+      }
+      .toc-stats strong {
+        color: var(--slate-dark);
+        font-weight: 600;
+      }
+
+      /* ─── Back to top ─── */
+      .back-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 46px;
+        height: 46px;
+        background: var(--slate-dark);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.3s;
+        pointer-events: none;
+        z-index: 100;
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+      .back-to-top:hover {
+        background: var(--clay);
+      }
+
+      /* ─── Responsive ─── */
+      @media (max-width: 900px) {
+        .blog-post-layout {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 3rem 1.5rem 5rem;
+        }
+        .blog-post-sidebar {
+          position: static;
+          order: -1;
+        }
+      }
+      @media (max-width: 600px) {
+        .blog-post-hero {
+          padding: 120px 0 40px;
+        }
+        .blog-post-title {
+          font-size: 2rem;
+        }
+        .blog-post-layout {
+          padding: 2rem 1rem 4rem;
+        }
+        .back-to-top {
+          bottom: 1.5rem;
+          right: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
+      <div class="nav-inner">
+        <a href="../index.html" class="nav-logo" style="text-decoration: none"
+          >PR</a
+        >
+        <ul class="nav-links" id="nav-links">
+          <li><a href="../blog-only.html#posts" class="nav-link">All Posts</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Blog Post Hero -->
+    <header class="blog-post-hero">
+      <div class="container">
+        <a href="../blog-only.html" class="blog-back-link">
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M19 12H5M12 5l-7 7 7 7" />
+          </svg>
+          Back to Blog
+        </a>
+        <div class="blog-post-category">Travel Journal</div>
+        <h1 class="blog-post-title">
+          Arizona Adventure:<br /><em>A Family Trip</em>
+        </h1>
+        <div class="blog-post-meta">
+          <div class="blog-meta-item">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" />
+              <path d="M16 2v4M8 2v4M3 10h18" />
+            </svg>
+            June 9 – 11, 2025
+          </div>
+          <div class="blog-meta-item">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </svg>
+            8 min read
+          </div>
+          <div class="blog-meta-item">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Arizona, USA
+          </div>
+          <div class="blog-meta-item">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            Padmashri R
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Layout: Body + Sidebar -->
+    <div class="blog-post-layout">
+      <!-- Main Content -->
+      <article class="blog-post-body">
+        <p>
+          There are trips you take for a reason, and then there are trips that
+          become a reason — a reason to pause, laugh, argue, wonder, and hold
+          onto each other a little tighter. Our Arizona adventure was exactly
+          that. Three days, one family, five iconic destinations, and enough
+          memories to last a lifetime.
+        </p>
+
+        <ul class="blog-location-list">
+          <li>Flagstaff</li>
+          <li>Grand Canyon South Rim</li>
+          <li>Horseshoe Bend</li>
+          <li>Antelope Canyon</li>
+          <li>Sedona</li>
+        </ul>
+
+        <!-- Day 1 -->
+        <h2 class="blog-section-heading" id="day1">
+          Day 1 — The Road to Flagstaff
+        </h2>
+
+        <p>
+          The journey began on a Monday, June 9th, 2025. Our travel companion
+          kept the mood lively throughout the drive — talkative, spirited, and
+          making every mile feel shorter than it was. That kind of energy is
+          what you want at the start of a road trip.
+        </p>
+        <p>
+          We arrived at our Airbnb — the
+          <strong>Pleasant Valley Hideaway</strong>, a beautifully modified
+          ranch nestled in a charming corner of the Arizona landscape. Instead
+          of animals, it welcomed tourists, and both Padma and Dhatri fell in
+          love with the place immediately. The design was inviting, the
+          atmosphere calm, and after a long drive, it was exactly what we
+          needed.
+        </p>
+        <p>
+          After a restful night, we began our
+          <strong>Flagstaff city tour</strong>. The city surprised us — it was
+          unlike the typical small American town. Well-maintained, clean, and
+          wonderfully walkable. There was a particular "Yercuda vibe" about it —
+          that misty hill-station feeling. We even spotted opportunities for
+          skiing on the Humphrey Mountain snowcap. A pitta wrap for lunch, and
+          we were ready for the centerpiece of the trip.
+        </p>
+
+        <div class="blog-highlight">
+          "She's Dhatri GPT," Shashank declared. Padma replied with a grin:
+          "Padma trained the DGPT LLM by feeding it colored rice, Maggie's
+          requests, and her father's Starbucks cravings."
+        </div>
+
+        <!-- Day 2 -->
+        <h2 class="blog-section-heading" id="day2">
+          Day 2 — The Grand Canyon &amp; Horseshoe Bend
+        </h2>
+
+        <p>
+          The real deal of the trip — the <strong>Grand Canyon</strong>. We
+          visited the South Rim and Martha's Viewpoint. No photograph, no
+          screen, no description truly prepares you for the moment you stand at
+          the edge of the Grand Canyon. We were in awe. Absolutely, completely,
+          overwhelmingly in awe.
+        </p>
+        <p>
+          Dhatri, as always, was on full form — roasting her mom and me in equal
+          measure, while Shashank and Padma fired back with comebacks worthy of
+          a comedic screenplay. The geology museum gave us context for what we
+          were witnessing — millions of years of Earth's history carved into
+          those walls. We picked up fridge magnets from the souvenir shop (a
+          family tradition at this point) and headed out.
+        </p>
+        <p>
+          Next stop: <strong>Horseshoe Bend</strong>. The trail from parking to
+          the viewpoint is 1.5 miles, and the summer Arizona heat made every
+          step feel earned. Padma had unfortunately begun to feel unwell —
+          headache, nausea, the works. Shashank's medicine kit and her trusty
+          Amrutanjan came to the rescue; she rested in the car while we made the
+          hot walk to the bend.
+        </p>
+
+        <div class="blog-highlight">
+          When we reached the spot — that perfect, impossible curve of the
+          Colorado River — it was worth every step. Worth the heat. Worth the
+          worry. The Earth, casually revealing its most dramatic work.
+        </div>
+
+        <p>
+          We regrouped at the car to find Padma doing better, then made our way
+          to <strong>Page, Arizona</strong> for the night. A stop at Safeway for
+          supplies, fresh clothes, a full gas tank — and that was Day 2 wrapped.
+          Simple and perfect.
+        </p>
+
+        <!-- Day 3 -->
+        <h2 class="blog-section-heading" id="day3">
+          Day 3 — Antelope Canyon &amp; Sedona
+        </h2>
+
+        <p>
+          Day 3 started early and with a camera in hand. We arrived at
+          <strong>Antelope Canyon</strong> in Navajo City before our 9 AM
+          booking slot and managed to get an early entry. Two hours inside the
+          canyon on a guided tour — and I transformed into a full paparazzi,
+          requesting poses from my wife and daughter at every turn of light.
+        </p>
+        <p>
+          Dhatri was mortified (as expected). Padma was patient (as always). The
+          canyon itself was a photographer's dream — the narrow slot walls
+          channeling light into golden beams, the sandstone glowing in amber and
+          rust. We came out with some genuinely stunning photographs and the
+          happiest of hearts.
+        </p>
+        <p>
+          After checking out of the Airbnb, we pointed the car toward
+          <strong>Sedona</strong>. The drive is unlike anything else — for at
+          least 20 minutes, the landscape looks like Mars, an expanse of red mud
+          and stone formations that stretches as far as the eye can see.
+          Breathtaking in the truest sense.
+        </p>
+        <p>
+          Along the way, we stopped at <strong>Pine Canyon</strong> — a trekking
+          spot with a cool, gurgling creek. Fifteen minutes in nature is
+          sometimes all it takes to reset the mind. I found myself thinking
+          philosophical thoughts, surrounded by trees and the sound of water,
+          realizing that getting lost in nature is truly therapeutic.
+        </p>
+
+        <div class="blog-highlight">
+          "I believe that getting lost in nature can be therapeutic and help us
+          heal our souls. God has His own plans for us, based on our karma and
+          past mistakes — and with His grace, we are able to enjoy the things He
+          permits and move on."
+        </div>
+
+        <p>
+          Sedona itself felt like a European village transplanted into the
+          desert — colorful shops, walls draped in creepers and paint, boutiques
+          selling Navajo jewelry (Dhatri scored a beautiful piece). We stopped
+          at a Pakistani chai shop where Padma discovered
+          <strong>Irani chai</strong> — that rich, milk-based tea popular in
+          Hyderabad and Gulbarga — and was completely captivated.
+        </p>
+        <p>
+          The <strong>Bell Rock Pathway Trailhead</strong> gave us our last
+          views of Sedona's iconic red sandstone formations before we made the
+          drive back to Chandler. A delicious dinner, well-deserved rest, and
+          smiles all around. Three days, five iconic places, one family — and a
+          journal full of stories to last forever.
+        </p>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="blog-post-sidebar" id="toc-sidebar">
+        <p class="toc-label">Table of Contents</p>
+        <ul class="toc-list">
+          <li><a href="#day1" class="toc-link">Day 1 — Flagstaff</a></li>
+          <li>
+            <a href="#day2" class="toc-link"
+              >Day 2 — Grand Canyon &amp; Horseshoe Bend</a
+            >
+          </li>
+          <li>
+            <a href="#day3" class="toc-link"
+              >Day 3 — Antelope Canyon &amp; Sedona</a
+            >
+          </li>
+        </ul>
+        <div class="toc-divider"></div>
+        <div class="toc-stats">
+          <strong>Trip Duration:</strong> 3 days<br />
+          <strong>State:</strong> Arizona, USA<br />
+          <strong>Destinations:</strong> 5<br />
+          <strong>Best moment:</strong> Horseshoe Bend at sunset<br />
+          <strong>Highlight:</strong> Antelope Canyon light beams
+        </div>
+      </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <a
+            href="../index.html"
+            class="footer-logo"
+            style="text-decoration: none"
+            >PR</a
+          >
+          <p class="footer-copy">© 2025 Padmashri R. All rights reserved.</p>
+          <nav class="footer-nav">
+            <a href="../blog-only.html#posts">All Posts</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">
+      <svg
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 19V5M5 12l7-7 7 7" />
+      </svg>
+    </button>
+
+    <script>
+      // Nav scroll
+      const nav = document.getElementById("main-nav");
+      window.addEventListener("scroll", () => {
+        nav.classList.toggle("scrolled", window.scrollY > 40);
+
+        // Back to top visibility
+        document
+          .getElementById("back-to-top")
+          .classList.toggle("visible", window.scrollY > 400);
+      });
+
+      // Hamburger
+      const hamburger = document.getElementById("hamburger");
+      const navLinks = document.getElementById("nav-links");
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("open");
+        navLinks.classList.toggle("open");
+      });
+      navLinks.querySelectorAll("a").forEach((a) => {
+        a.addEventListener("click", () => {
+          hamburger.classList.remove("open");
+          navLinks.classList.remove("open");
+        });
+      });
+
+      // Back to top click
+      document.getElementById("back-to-top").addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      // TOC active link tracking
+      const headings = document.querySelectorAll(".blog-section-heading");
+      const tocLinks = document.querySelectorAll(".toc-link");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              tocLinks.forEach((l) => l.classList.remove("active"));
+              const active = document.querySelector(
+                `.toc-link[href="#${entry.target.id}"]`,
+              );
+              if (active) active.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -60% 0px" },
+      );
+      headings.forEach((h) => observer.observe(h));
+    </script>
+  </body>
+</html>

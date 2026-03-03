@@ -1,14 +1,14 @@
 ---
-description: Design system and visual decisions for Padmashri R resume website
+description: Design system and visual decisions for padmashri.org and resume.padmashri.org
 ---
 
-# Design System — Resume Website
+# Design System — padmashri.org
 
 ## Design Inspiration
 
-The visual identity is inspired by **Anthropic's website** (`anthropic.com`), specifically:
+The visual identity is inspired by **Anthropic's website** (`anthropic.com`):
 
-- The warm ivory/cream background palette
+- Warm ivory/cream background palette
 - Dark near-black slate for text (high contrast, editorial feel)
 - Serif display headings mixed with clean sans-serif body text
 - Minimal, generous whitespace with a newspaper/editorial quality
@@ -21,76 +21,61 @@ The visual identity is inspired by **Anthropic's website** (`anthropic.com`), sp
 | Token            | Hex                  | Usage                                                       |
 | ---------------- | -------------------- | ----------------------------------------------------------- |
 | `--ivory-light`  | `#faf9f5`            | Page background, hero background                            |
-| `--ivory-medium` | `#f0eee6`            | Section alternating backgrounds (About, Education, Contact) |
+| `--ivory-medium` | `#f0eee6`            | Section alternating backgrounds, card backgrounds           |
 | `--ivory-dark`   | `#e8e6dc`            | Hover states on ivory surfaces                              |
 | `--oat`          | `#e3dacc`            | Decorative accents                                          |
 | `--slate-dark`   | `#141413`            | Primary text, buttons, nav logo, footer background          |
-| `--slate-medium` | `#3d3d3a`            | Body text, job bullets                                      |
+| `--slate-medium` | `#3d3d3a`            | Body text, job bullets, blog post body                      |
 | `--slate-light`  | `#5e5d59`            | Subtext, secondary labels, nav links                        |
 | `--cloud-medium` | `#b0aea5`            | Section labels, job numbers, date text                      |
-| `--clay`         | `#d97757`            | Job role accent color, hover highlights                     |
+| `--clay`         | `#d97757`            | Accent color: blog tags, job roles, hover highlights, links |
 | `--accent`       | `#c6613f`            | Darker clay variant, education grade badges                 |
 | `--manilla`      | `#ebdbbc`            | Education grade badge background                            |
 | `--kraft`        | `#d4a27f`            | Certification card icons                                    |
 | `--border`       | `rgba(20,20,19,0.1)` | All dividers and card borders                               |
 
-### Section Background Alternation
+### Section Background Alternation (Resume)
 
 ```
-Hero         → --ivory-light   (warm white)
-About        → --ivory-medium  (eggshell)
-Experience   → --ivory-light   (warm white)
-Education    → --ivory-medium  (eggshell)
-Certifications → --slate-dark  (near-black, contrast section)
-Contact      → --ivory-medium  (eggshell)
-Footer       → --slate-dark    (near-black)
+Hero           → --ivory-light
+About          → --ivory-medium
+Experience     → --ivory-light
+Education      → --ivory-medium
+Certifications → --slate-dark  (contrast dark band)
+Contact        → --ivory-medium
+Blog Preview   → --ivory-light
+Footer         → --slate-dark
 ```
 
 ---
 
 ## Typography
 
-### Font Families
-
 | Role               | Font             | Fallback          |
 | ------------------ | ---------------- | ----------------- |
 | Display / Headings | Playfair Display | Georgia, serif    |
 | Body / UI          | Inter            | Arial, sans-serif |
 
-The `Playfair Display` matches Anthropic's `Anthropic Serif / Georgia` aesthetic. `Inter` is the clean sans counterpart to Anthropic's `Anthropic Sans / Arial`.
-
 ### Type Scale
 
-| Token concept | CSS value                      | Used for                  |
-| ------------- | ------------------------------ | ------------------------- |
-| Hero title    | `clamp(4rem, 10vw, 9rem)`      | Page hero name            |
-| Section title | `clamp(2.2rem, 4vw, 3.5rem)`   | H2 headings               |
-| Job company   | `clamp(1.1rem, 1.8vw, 1.4rem)` | H3 in experience card     |
-| Body          | `1rem`                         | Paragraphs, bullets       |
-| Label / Tag   | `0.75–0.85rem`                 | Section labels, tech tags |
-
-### Type Treatments
-
-- **Italic + lighter weight** on hero subtitle word (e.g. `R.`) — editorial elegance
-- **Section labels** are `uppercase + letter-spacing: 0.15em + cloud-medium color` — Anthropic-style eyebrow text
-- **Headings** use `letter-spacing: -0.02em` (tight tracking) — premium, editorial look
+| Concept       | CSS value                    | Used for                  |
+| ------------- | ---------------------------- | ------------------------- |
+| Hero title    | `clamp(4rem, 10vw, 9rem)`    | Resume hero name          |
+| Blog hero     | `clamp(3.5rem, 8vw, 7.5rem)` | "Padmashri Writes." hero  |
+| Section title | `clamp(2.2rem, 4vw, 3.5rem)` | H2 section headings       |
+| Blog post h1  | `clamp(2.2rem, 5vw, 3.6rem)` | Blog post title           |
+| Blog section  | `1.6rem`                     | Day 1 / Day 2 headings    |
+| Body          | `1rem–1.05rem`               | Paragraphs, bullets       |
+| Label / Tag   | `0.75–0.85rem`               | Blog tags, section labels |
 
 ---
 
 ## Layout & Spacing
 
-### Container
-
-- Max width: `89.5rem` (matching Anthropic's `--site--width`)
-- Horizontal padding: `clamp(1.5rem, 4vw, 5rem)` — fluid gutters
-
-### Spacing Scale
-
-Uses `--sp-1` (0.25rem) through `--sp-12` (10rem), same rhythm as Anthropic's `--_spacing---space` tokens.
-
-### Section Padding
-
-All sections use `clamp(5rem, 10vh, 8rem)` vertical padding — generous breathing room.
+- **Container max width:** `89.5rem` (matching Anthropic's `--site--width`)
+- **Horizontal padding:** `clamp(1.5rem, 4vw, 5rem)` — fluid gutters
+- **Spacing scale:** `--sp-1` (0.25rem) → `--sp-12` (10rem)
+- **Section padding:** `clamp(5rem, 10vh, 8rem)` vertical
 
 ---
 
@@ -100,66 +85,71 @@ All sections use `clamp(5rem, 10vh, 8rem)` vertical padding — generous breathi
 
 - Fixed, `backdrop-filter: blur(12px)` frosted glass on ivory
 - Border-bottom appears only after scroll (`scrolled` class via JS)
-- Logo: 2-letter monogram in Playfair Display (serif)
+- Logo: `PR` monogram in Playfair Display (serif)
 - Links: thin underline animation on hover (`::after` scaleX trick)
-- CTA button (pill shape, dark fill)
 
-### Hero Section
+**Resume site nav:** About · Experience · Education · Certifications · Contact + "Get in Touch" CTA  
+**Blog site nav:** All Posts only (clean, minimal)  
+**Blog post nav:** All Posts + Back to Blog breadcrumb
 
-- **Stats row**: 3 numbers separated by hairline dividers
-- **Scroll indicator**: animated bouncing text + gradient line
-- **Parallax**: background text drifts slightly upward on scroll (via JS)
-- **Entrance animation**: each element staggers in with 100ms delay using `requestAnimationFrame`
-- **CTA Icon Buttons**: four circle icon buttons in a row, each wrapped in `.btn-icon-wrap`
-  - **Exp** (dark filled) — scrolls to `#experience`
-  - **Email** (outline) — opens mailto link
-  - **LinkedIn** (outline) — opens LinkedIn profile in new tab
-  - **Resume** (outline) — triggers download of `padmashri_resume.pdf`
-  - Each icon has a small label below it (`.btn-icon-label`, uppercase, 0.65rem)
+### Hero Section (Resume)
 
-> **Note:** The original large decorative `BI` background text (`hero-bg-text`) has been removed from the hero section.
+- Stats row: 3 numbers with vertical dividers
+- Scroll indicator: animated bouncing text + gradient line
+- Parallax: background text drifts on scroll (JS)
+- Entrance animation: elements stagger in with 100ms delay
+- **CTA Icon Buttons** (in order):
+  - **Exp** (dark filled) → scrolls to `#experience`
+  - **Email** (outline) → opens mailto
+  - **LinkedIn** (outline) → opens LinkedIn in new tab
+  - **Resume** (outline) → downloads `padmashri_resume.pdf`
 
-### Job Experience Accordion
+### Blog Hero ("Padmashri Writes.")
 
-- Expanding/collapsing on `max-height` transition (not `height: auto`, which can't animate)
-- `collapsed` class sets `max-height: 0; overflow: hidden`
-- Clicking anywhere on the job header row (not just the `+` button) triggers toggle
-- Tech tags displayed above bullet points inside the expanded section
+- Giant decorative watermark text "Journal" in outline stroke
+- `min-height: 60vh`
+- Stats row: Posts Published · Destinations Covered · Year Started
 
-### Cards (Education)
+### Blog Cards
 
-- White cards on ivory-medium background — subtle lift
-- `transform: translateY(-4px)` + `box-shadow` on hover
-- Grade displayed as a colored badge (`--manilla` bg + `--accent` text)
+- Rounded cards (`border-radius: 14px`) on ivory-medium background
+- Hover: `translateY(-6px)` + `box-shadow`
+- Clay-colored tags (`blog-card-tag`), location pills (`blog-loc`)
+- Featured card spans full grid width with two-column internal grid
+- Coming Soon card: dashed border, reduced opacity
 
-### Certifications
+### Blog Post Page
 
-- Dark section (`--slate-dark` bg) for contrast — one dark band breaks the all-ivory monotony
-- Cards use `rgba(255,255,255,0.05)` glass bg + `translateX(6px)` hover
-- Icon squares with `rgba` white fill
+- Layout: main article + sticky sidebar TOC (240px)
+- Sidebar: Table of Contents + trip stats
+- Section headings have clay left-border `::before` accent (48px wide)
+- Pull quotes: `blog-highlight` class with left clay border
+- Back to top floating button (appears after 400px scroll)
+- TOC active link tracking via `IntersectionObserver`
 
-### Scroll Reveal
+### Job Experience Accordion (Resume)
 
-- `IntersectionObserver` with `rootMargin: '0px 0px -60px 0px'` — elements animate when 60px above viewport bottom
-- Sibling stagger: `transitionDelay = index * 80ms`
-- Reset: `opacity: 0; transform: translateY(30px)` → `opacity: 1; transform: translateY(0)`
+- `max-height` transition (not `height: auto`)
+- `collapsed` class → `max-height: 0; overflow: hidden`
+- Full header row is clickable, not just the `+` button
+- Tech tags displayed above bullet points
 
 ---
 
 ## Responsive Breakpoints
 
-| Breakpoint | Changes                                                                                          |
-| ---------- | ------------------------------------------------------------------------------------------------ |
-| `≤ 900px`  | About grid → single column; Nav links hidden → hamburger menu shown; nav CTA hidden              |
-| `≤ 600px`  | Edu grid → 1 column; cert cards → vertical stack; hero actions → column; footer → centered stack |
+| Breakpoint | Changes                                                                             |
+| ---------- | ----------------------------------------------------------------------------------- |
+| `≤ 900px`  | Blog grid → 1 col; nav links hidden → hamburger; sidebar TOC becomes top bar        |
+| `≤ 600px`  | All grids stack; hero font scales down; blog post layout collapses to single column |
 
 ---
 
 ## PDF Content Extraction Strategy
 
-The source `padmashri_resume.pdf` had a **multi-column layout** making standard `pdfminer` text extraction garbled. Solution:
+For both resume and blog PDFs:
 
-1. Used `PyMuPDF (fitz)` with `page.get_text('dict')` to get structured block/line/span data
-2. Sorted blocks by `(y-coordinate, x-coordinate)` to reconstruct reading order
-3. Wrote output to a file (not stdout) to avoid terminal truncation
-4. Manually organized content into website sections
+1. Use `PyMuPDF (fitz)` with `page.get_text()` for extraction
+2. For multi-column PDFs: use `page.get_text('dict')` + sort blocks by `(y, x)` coordinates
+3. Always write output to a file, not stdout (terminal truncates)
+4. `publish_blog.py` handles blog PDF extraction automatically

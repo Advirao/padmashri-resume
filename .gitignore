@@ -55,3 +55,6 @@ yarn-error.log*
 /dist/
 /build/
 /.cache/
+
+# Allow blog publishing script
+!publish_blog.py

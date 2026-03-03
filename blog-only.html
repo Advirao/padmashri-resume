@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Padmashri R — Journal & Stories</title>
+    <meta
+      name="description"
+      content="Personal journal and stories by Padmashri R — travel, reflections, and everyday observations."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* ── Blog-only page extras ── */
+      .blog-hero {
+        min-height: 60vh;
+        background: var(--ivory-light);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: var(--nav-h);
+        position: relative;
+        overflow: hidden;
+      }
+      .blog-hero-bg {
+        position: absolute;
+        right: -0.05em;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: var(--font-serif);
+        font-size: clamp(10rem, 22vw, 20rem);
+        font-weight: 600;
+        color: transparent;
+        -webkit-text-stroke: 1px var(--border);
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+        letter-spacing: -0.04em;
+      }
+      .blog-hero-inner {
+        position: relative;
+        z-index: 1;
+        padding: clamp(3rem, 6vh, 6rem) clamp(1.5rem, 4vw, 5rem);
+        max-width: min(89.5rem, 100vw);
+        margin: 0 auto;
+        width: 100%;
+      }
+      .blog-hero-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--slate-light);
+        font-weight: 500;
+        margin-bottom: var(--sp-5);
+      }
+      .blog-hero-title {
+        font-family: var(--font-serif);
+        font-weight: 600;
+        font-size: clamp(3.5rem, 8vw, 7.5rem);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--sp-6);
+      }
+      .blog-hero-title em {
+        font-style: italic;
+        font-weight: 400;
+        color: var(--slate-medium);
+      }
+      .blog-hero-sub {
+        font-size: clamp(1rem, 1.4vw, 1.15rem);
+        color: var(--slate-light);
+        max-width: 52ch;
+        line-height: 1.65;
+        margin-bottom: var(--sp-7);
+      }
+      .blog-hero-meta {
+        display: flex;
+        align-items: center;
+        gap: var(--sp-6);
+        padding-top: var(--sp-5);
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .blog-meta-stat {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      .blog-meta-num {
+        font-family: var(--font-serif);
+        font-size: 1.8rem;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+      .blog-meta-label {
+        font-size: 0.78rem;
+        color: var(--slate-light);
+        letter-spacing: 0.04em;
+      }
+      .blog-meta-divider {
+        width: 1px;
+        height: 2rem;
+        background: var(--border);
+      }
+
+      /* Post list section */
+      .blog-posts-section {
+        background: var(--ivory-medium);
+        padding: clamp(4rem, 8vh, 7rem) 0;
+      }
+
+      /* Wider grid for blog-only — show all posts in a better layout */
+      .blog-posts-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--sp-5);
+        margin-top: var(--sp-8);
+      }
+
+      /* Featured first card spans full width */
+      .blog-card-featured {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+      .blog-card-featured .blog-card-inner {
+        min-height: 320px;
+      }
+      .blog-card-featured .blog-card-title {
+        font-size: 1.8rem;
+      }
+      .blog-card-featured .blog-card-excerpt {
+        font-size: 1rem;
+      }
+
+      /* Nav overrides for blog-only site */
+      .nav-blog-link {
+        font-family: var(--font-sans);
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--slate-light);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        transition: color var(--transition);
+      }
+      .nav-blog-link:hover { color: var(--clay); }
+
+      @media (max-width: 900px) {
+        .blog-posts-grid { grid-template-columns: 1fr; }
+        .blog-card-featured { grid-template-columns: 1fr; }
+        .blog-card-featured .blog-card-title { font-size: 1.4rem; }
+      }
+      @media (max-width: 600px) {
+        .blog-hero-title { font-size: clamp(2.8rem, 12vw, 4.5rem); }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav class="nav" id="main-nav">
+      <div class="nav-inner">
+        <div class="nav-logo">PR</div>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#posts" class="nav-link">All Posts</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Blog Hero -->
+    <header class="blog-hero">
+      <div class="blog-hero-bg">Journal</div>
+      <div class="blog-hero-inner">
+        <div class="blog-hero-label">Personal Blog · Stories &amp; Reflections</div>
+        <h1 class="blog-hero-title">
+          <span>Padmashri</span><br />
+          <em>Writes.</em>
+        </h1>
+        <p class="blog-hero-sub">
+          Travel journals, everyday observations, and moments worth putting into words.
+          An unfiltered look at life beyond the spreadsheets.
+        </p>
+        <div class="blog-hero-meta">
+          <div class="blog-meta-stat">
+            <span class="blog-meta-num">1</span>
+            <span class="blog-meta-label">Post Published</span>
+          </div>
+          <div class="blog-meta-divider"></div>
+          <div class="blog-meta-stat">
+            <span class="blog-meta-num">5</span>
+            <span class="blog-meta-label">Destinations Covered</span>
+          </div>
+          <div class="blog-meta-divider"></div>
+          <div class="blog-meta-stat">
+            <span class="blog-meta-num">2025</span>
+            <span class="blog-meta-label">Started Writing</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Posts Section -->
+    <section class="blog-posts-section" id="posts">
+      <div class="container">
+        <div class="section-label">Latest Posts</div>
+        <h2 class="section-title">All Stories</h2>
+
+        <div class="blog-posts-grid">
+
+          <!-- Featured Post: Arizona Trip -->
+          <article class="blog-card blog-card-featured reveal">
+            <div class="blog-card-inner">
+              <div class="blog-card-top">
+                <span class="blog-card-tag">Travel Journal</span>
+                <span class="blog-card-date">June 9–11, 2025</span>
+              </div>
+              <h2 class="blog-card-title">Arizona Adventure: A Family Trip</h2>
+              <p class="blog-card-excerpt">
+                Grand Canyon, Antelope Canyon, Horseshoe Bend, Flagstaff, and Sedona — three days of awe,
+                laughter, philosophical musings in Pine Canyon, and one very enthusiastic paparazzi dad
+                with a camera. Some trips you take for a reason. Others become a reason.
+              </p>
+              <div class="blog-card-footer">
+                <div class="blog-card-locations">
+                  <span class="blog-loc">Grand Canyon</span>
+                  <span class="blog-loc">Antelope Canyon</span>
+                  <span class="blog-loc">Horseshoe Bend</span>
+                  <span class="blog-loc">Sedona</span>
+                  <span class="blog-loc">Flagstaff</span>
+                </div>
+                <a href="blogs/arizona-trip.html" class="blog-card-link">
+                  Read Story
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Placeholder: Future Post -->
+          <article class="blog-card blog-card--upcoming reveal">
+            <div class="blog-card-inner">
+              <div class="blog-card-top">
+                <span class="blog-card-tag">Coming Soon</span>
+              </div>
+              <h3 class="blog-card-title">More stories on the way&hellip;</h3>
+
+              <div class="blog-card-footer">
+                <span class="blog-card-upload-hint">Drop a .docx or .pdf to get started</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-logo">PR</div>
+          <p class="footer-copy">© 2025 Padmashri R. All rights reserved.</p>
+          <nav class="footer-nav">
+            <a href="#posts">Posts</a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const nav = document.getElementById('main-nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+      });
+
+      const hamburger = document.getElementById('hamburger');
+      const navLinks = document.getElementById('nav-links');
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open');
+      });
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          hamburger.classList.remove('open');
+          navLinks.classList.remove('open');
+        });
+      });
+
+      // Scroll reveal
+      const reveals = document.querySelectorAll('.reveal');
+      const observer = new IntersectionObserver(
+        entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+        { threshold: 0.1 }
+      );
+      reveals.forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
